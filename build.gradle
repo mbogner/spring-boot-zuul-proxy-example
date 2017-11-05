@@ -13,6 +13,10 @@ buildscript {
     }
 }
 
+plugins {
+    id 'org.sonarqube' version '2.5'
+}
+
 allprojects {
     apply plugin: 'idea'
 
@@ -31,6 +35,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'maven'
     apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'jacoco'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
