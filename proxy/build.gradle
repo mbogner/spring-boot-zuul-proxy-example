@@ -1,0 +1,7 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-zuul', version: '1.3.5.RELEASE'
+    compile group: 'com.netflix.zuul', name: 'zuul-core', version: '1.3.1'
+}
+

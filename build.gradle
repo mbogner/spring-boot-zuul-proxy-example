@@ -1,0 +1,56 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.8.RELEASE'
+        lombokVersion = '1.16.18'
+        junitVersion = '4.12'
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+allprojects {
+    apply plugin: 'idea'
+
+    group 'pm.mbo'
+
+    idea {
+        module {
+            inheritOutputDirs = false
+            outputDir = file("$buildDir/classes/main/")
+            testOutputDir = file("$buildDir/classes/test/")
+        }
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'io.spring.dependency-management'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    dependencyManagement {
+        imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }
+    }
+
+    dependencies {
+        compileOnly(group: 'org.projectlombok', name: 'lombok', version: lombokVersion)
+        testCompile(group: 'junit', name: 'junit', version: junitVersion)
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.2.1'
+}

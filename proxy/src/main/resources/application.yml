@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api
+
+zuul:
+  include-debug-header: true
+  routes:
+    api:
+      path: /api/**
+      url: http://localhost:8081
+
+logging:
+  level:
+    root: info
+    pm.mbo: debug
