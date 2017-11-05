@@ -54,6 +54,16 @@ subprojects {
         mavenCentral()
     }
 
+    jacocoTestReport {
+        reports {
+            xml.enabled true
+            xml.destination file("${project.reporting.baseDir}/jacoco/report.xml")
+            csv.enabled false
+            html.enabled true
+            html.destination file("${project.reporting.baseDir}/jacoco/html")
+        }
+    }
+
 }
 
 task wrapper(type: Wrapper) {
