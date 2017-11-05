@@ -1,4 +1,4 @@
-rootProject.name = 'zuul-proxy-test'
+rootProject.name = 'spring-boot-zuul-proxy-example'
 
 include 'proxy'
 include 'api'
